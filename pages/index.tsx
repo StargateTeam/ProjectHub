@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { useDispatch } from "react-redux";
 import { increase } from "../src/lib/store/@test/addAnything";
+import Button from "../src/components/Button";
 
 // 1. 버튼을 만들거야
 // 2. 해당 버튼에 디스패치 핸들러를 넣을거야
@@ -13,12 +14,20 @@ const Home: NextPage = () => {
 
   const dispatchHandler = () => {
     console.log("t");
-    dispatch(increase);
+    dispatch(increase());
   };
 
   return (
     <div className={styles.container}>
-      <button onClick={dispatchHandler}>디스패치</button>
+      <Button
+        onClick={dispatchHandler}
+        width="fit"
+        height="medium"
+        rounded="full"
+        theme="white"
+      >
+        디스패치
+      </Button>
     </div>
   );
 };
