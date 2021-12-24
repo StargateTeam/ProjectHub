@@ -11,7 +11,7 @@ describe("test", () => {
     color: "#6d77ff"
   };
 
-  const wrapper = shallow(<Switch color={props.color} check={props.check} onChangeToggle={props.onChangeToggle}/>);
+  const wrapper = shallow(<Switch {...props}/>);
   const { style } = wrapper.last().get(0).props.children[0].props;
 
   it("check가 True일 때 색상 값이 props.color과 같을 것", () => {
