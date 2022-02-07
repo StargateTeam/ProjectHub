@@ -19,7 +19,7 @@ const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <button onClick={dispatchHandler}>디스패치</button>
-      <h2>자동화 배포 적용 완료</h2>
+      <h2 style="color: #F1C2E3">자동화 배포 적용 완료</h2>
     </div>
   );
 };
