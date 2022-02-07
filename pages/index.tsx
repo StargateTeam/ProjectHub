@@ -13,7 +13,7 @@ const Home: NextPage = () => {
 
   const dispatchHandler = () => {
     console.log("t");
-    dispatch(increase);
+    dispatch(increase());
   };
 
   return (
