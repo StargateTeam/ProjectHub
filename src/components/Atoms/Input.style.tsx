@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 
-import { configureStyle } from '@/core/utils/emotions'
+import colorScheme from '@/constants/styles/colorScheme'
+import { configureStyle, makeStyleConst } from '@/core/utils/emotions'
 
 import { InputProps } from './Input'
 
@@ -74,11 +75,20 @@ const useThemeStyle = config('theme', {
   }
 })
 
+// 백그라운드 색상 처리
+const useBgColorStyle = config(
+  'bgColor',
+  makeStyleConst(colorScheme, {
+    styleKey: 'backgroundColor'
+  })
+)
+
 const InputStyled = styled.input<InputProps>((props) => ({
   ...useRoundedStyle(props),
   ...useWidthStyle(props),
   ...useHeightStyle(props),
-  ...useThemeStyle(props)
+  ...useThemeStyle(props),
+  ...useBgColorStyle(props)
 }))
 
 export default InputStyled

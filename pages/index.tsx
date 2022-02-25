@@ -1,8 +1,9 @@
 import type { NextPage } from 'next'
 import { useDispatch } from 'react-redux'
 
+import DefaultPage from '@/components/Templetes/DefaultPage'
+
 import { increase } from '../src/lib/store/@test/addAnything'
-import styles from '../styles/Home.module.css'
 
 // 1. 버튼을 만들거야
 // 2. 해당 버튼에 디스패치 핸들러를 넣을거야
@@ -14,12 +15,7 @@ const Home: NextPage = () => {
     dispatch(increase())
   }
 
-  return (
-    <div className={styles.container}>
-      <button onClick={dispatchHandler}>디스패치</button>
-      <h2 style={{ color: '#F1C2E3' }}>자동화 배포 적용 완료</h2>
-    </div>
-  )
+  return <DefaultPage onDispatchButtonHandler={dispatchHandler} />
 }
 
 export default Home

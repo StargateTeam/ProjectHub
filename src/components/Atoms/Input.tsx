@@ -1,3 +1,5 @@
+import colorScheme from '@/constants/styles/colorScheme'
+
 import InputStyled from './Input.style'
 
 export type InputProps = React.PropsWithChildren<{
@@ -8,6 +10,7 @@ export type InputProps = React.PropsWithChildren<{
   className?: string
   style?: React.CSSProperties
   placeholder?: string
+  bgColor?: keyof typeof colorScheme
 }>
 
 const Input = (props: InputProps) => {
