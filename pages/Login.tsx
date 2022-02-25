@@ -4,28 +4,30 @@ import styled from 'styled-components';
 export default function Login() {
   return (
     <Container>
-      <LogoWrapper>
-        <Logo src="https://cdn-icons-png.flaticon.com/512/6877/6877758.png"></Logo>
-      </LogoWrapper>
-      <TitleWrapper>Sign in to 면접프로젝트이름</TitleWrapper>
-      <LoginFormContainer>
-        <InputWrapper>
-          <EmailaddressText>Email address</EmailaddressText>
-          <EmailaddressInput></EmailaddressInput>
-          <PasswordTextWrapper>
-            <PasswordText>Password</PasswordText>
-            <PasswordForgotText>비밀번호 찾기</PasswordForgotText>
-          </PasswordTextWrapper>
+      <Wrapper>
+        <LogoWrapper>
+          <Logo src="https://cdn-icons-png.flaticon.com/512/6877/6877758.png" />
+        </LogoWrapper>
+        <TitleWrapper>Sign in to 면접프로젝트이름</TitleWrapper>
+        <LoginFormContainer>
+          <InputWrapper>
+            <EmailaddressText>Email address</EmailaddressText>
+            <EmailaddressInput placeholder="Email address" />
+            <PasswordTextWrapper>
+              <PasswordText>Password</PasswordText>
+              <PasswordForgotText>비밀번호 찾기</PasswordForgotText>
+            </PasswordTextWrapper>
 
-          <PasswordInput></PasswordInput>
-        </InputWrapper>
+            <PasswordInput placeholder="Password" />
+          </InputWrapper>
 
-        <SubmitButton>Sign in</SubmitButton>
-      </LoginFormContainer>
-      <SignUpWrapper>
-        <SignUpText>계정이 없으신가요?</SignUpText>
-        <SignUpButton>계정 만들기</SignUpButton>
-      </SignUpWrapper>
+          <SubmitButton>Sign in</SubmitButton>
+        </LoginFormContainer>
+        <SignUpWrapper>
+          <SignUpText>계정이 없으신가요?</SignUpText>
+          <SignUpButton>계정 만들기</SignUpButton>
+        </SignUpWrapper>
+      </Wrapper>
     </Container>
   );
 }
@@ -33,12 +35,17 @@ export default function Login() {
 const Container = styled.div`
   width: 100%;
   height: 100%;
-  /* background-color: red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const Wrapper = styled.div`
+  position: absolute;
+  top: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
 `;
 const LogoWrapper = styled.div``;
 const Logo = styled.img`
@@ -60,6 +67,7 @@ const LoginFormContainer = styled.form`
   justify-content: space-around;
   align-items: center;
   padding: 20px 20px;
+  margin-bottom: 30px;
 `;
 
 const InputWrapper = styled.div`
@@ -121,5 +129,15 @@ const SignUpWrapper = styled.div`
   width: 100%;
   justify-content: space-around;
 `;
-const SignUpText = styled.div``;
-const SignUpButton = styled.div``;
+const SignUpText = styled.div`
+  font-size: 15px;
+`;
+const SignUpButton = styled.div`
+  font-size: 15px;
+
+  color: #1480ff;
+  cursor: pointer;
+  :hover {
+    text-decoration: underline;
+  }
+`;
