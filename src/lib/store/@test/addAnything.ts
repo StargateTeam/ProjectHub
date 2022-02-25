@@ -9,7 +9,6 @@ const addAnything = createSlice({
   initialState,
   reducers: {
     increase(state) {
-      console.log(state)
       state.value++
     }
   }
