@@ -16,9 +16,12 @@ export default function Login() {
     formState: { errors }
   } = useForm<Inputs>()
 
-  const onFormSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log('form')
-    console.log('data', data)
+  const onFormSubmit: SubmitHandler<Inputs> = ({
+    idRequired,
+    passwordRequired
+  }) => {
+    console.log('id', idRequired)
+    console.log('pw', passwordRequired)
   }
   return (
     <Container>
@@ -30,13 +33,24 @@ export default function Login() {
         <LoginForm onSubmit={handleSubmit(onFormSubmit)}>
           <InputWrapper>
             <EmailaddressText>Email address</EmailaddressText>
-            {errors.idRequired && <Error>이메일을 입력해주세요.</Error>}
-
+            {errors.idRequired && errors.idRequired.type === 'required' ? (
+              <Error>이메일을 입력해주세요.</Error>
+            ) : (
+              errors.idRequired &&
+              errors.idRequired.type === 'pattern' && (
+                <Error>이메일 형식으로 맞춰주세요.</Error>
+              )
+            )}
             <EmailaddressInput
               type="text"
               placeholder="Email address"
-              {...register('idRequired', { required: true })}
+              {...register('idRequired', {
+                required: true,
+                pattern:
+                  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i
+              })}
             />
+            {/* Input Atoms를 쓰려했지만 form라이브러리를 적용하는게 귀찮아서 일단 input 씀 */}
             {/* <Input
               rounded="normal"
               width="full"
@@ -49,12 +63,12 @@ export default function Login() {
               <PasswordForgotText>비밀번호 찾기</PasswordForgotText>
             </PasswordTextWrapper>
             {errors.passwordRequired && <Error>패스워드를 입력해주세요.</Error>}
-
             <PasswordInput
               placeholder="Password"
               type="password"
               {...register('passwordRequired', { required: true })}
             />
+            {/* Input Atoms를 쓰려했지만 form라이브러리를 적용하는게 귀찮아서 일단 input 씀 */}
             {/* <Input
               rounded="normal"
               width="full"
