@@ -1,5 +1,6 @@
 import { CSSProperties } from 'react'
 import {
+  Control,
   FieldError,
   SubmitHandler,
   UseFormHandleSubmit,
@@ -8,23 +9,23 @@ import {
 import styled from 'styled-components'
 
 import Button from '@/components/Atoms/Button'
+import InputForm from '@/components/Atoms/Form/inputForm'
 
 import { Inputs } from '../../../pages/Login'
-
 type LoginPageType = {
   onFormSubmit: SubmitHandler<Inputs>
   handleSubmit: UseFormHandleSubmit<Inputs>
-  register: UseFormRegister<Inputs>
   errors: {
     idRequired?: FieldError | undefined
     passwordRequired?: FieldError | undefined
   }
+  control: Control<any>
 }
-export default function LoginPage({
+export function LoginPage({
   onFormSubmit,
   handleSubmit,
-  register,
-  errors
+  errors,
+  control
 }: LoginPageType) {
   return (
     <Container>
@@ -44,7 +45,8 @@ export default function LoginPage({
                 <Error>이메일 형식으로 맞춰주세요.</Error>
               )
             )}
-            <EmailaddressInput
+            {/* 옛날꺼 */}
+            {/* <EmailaddressInput
               type="text"
               placeholder="Email address"
               {...register('idRequired', {
@@ -52,17 +54,35 @@ export default function LoginPage({
                 pattern:
                   /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i
               })}
+            /> */}
+            <InputForm
+              name="idRequired"
+              control={control}
+              rules={{
+                required: true,
+                pattern:
+                  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i
+              }}
+              placeholder="Email address"
             />
-
             <PasswordTextWrapper>
               <PasswordText>Password</PasswordText>
               <PasswordForgotText>비밀번호 찾기</PasswordForgotText>
             </PasswordTextWrapper>
             {errors.passwordRequired && <Error>패스워드를 입력해주세요.</Error>}
-            <PasswordInput
+            {/* 옛날꺼 */}
+            {/* <PasswordInput
               placeholder="Password"
               type="password"
               {...register('passwordRequired', { required: true })}
+            /> */}
+            <InputForm
+              name="passwordRequired"
+              control={control}
+              rules={{
+                required: true
+              }}
+              placeholder="Password"
             />
           </InputWrapper>
           <ButtonWrapper>

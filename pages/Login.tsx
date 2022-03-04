@@ -1,6 +1,6 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-import LoginPage from '@/components/Templetes/LoginPage'
+import { LoginPage } from '@/components/Templetes/LoginPage'
 
 export type Inputs = {
   idRequired: string
@@ -9,8 +9,8 @@ export type Inputs = {
 export default function Login() {
   const {
     handleSubmit,
-    register,
-    formState: { errors }
+    formState: { errors },
+    control
   } = useForm<Inputs>()
 
   const onFormSubmit: SubmitHandler<Inputs> = ({
@@ -24,8 +24,8 @@ export default function Login() {
     <LoginPage
       onFormSubmit={onFormSubmit}
       handleSubmit={handleSubmit}
-      register={register}
       errors={errors}
+      control={control}
     />
   )
 }
