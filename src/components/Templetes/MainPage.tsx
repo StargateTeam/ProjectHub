@@ -8,8 +8,8 @@ type MainPageType = {
 export function MainPage({ interview }: MainPageType) {
   return (
     <>
-      {interview.map((card, index) => (
-        <InterviewCard key={index} interview={card} />
+      {interview.map((card) => (
+        <InterviewCard key={card.id} interview={card} />
       ))}
     </>
   )
