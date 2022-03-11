@@ -1,6 +1,8 @@
+import { differenceInDays, differenceInMinutes } from 'date-fns'
 import { FiUser, FiUserCheck } from 'react-icons/fi'
 
 import { interviewCardInfo } from '@/../pages/Main'
+import ProgressBar from '@/components/Atoms/ProgressBar'
 import RecruitDate from '@/components/Oraganisms/Bodys/RecruitDate'
 
 import {
@@ -12,8 +14,7 @@ import {
   CardTitleWrap,
   CheckApplicant,
   MainContainer,
-  NewApplicant,
-  Progress
+  NewApplicant
 } from './InterviewCard.style'
 
 type InterviewCardProps = {
@@ -22,14 +23,14 @@ type InterviewCardProps = {
 
 export function InterviewCard({ interview }: InterviewCardProps) {
   const days =
-    interview.startDate !== undefined && interview.endDate !== undefined
-      ? Math.round((+new Date() - +interview.endDate) / -(24 * 60 * 60 * 1000))
+    interview.startDate && interview.endDate
+      ? differenceInDays(interview.endDate, new Date())
       : 0
   const percent =
-    interview.startDate !== undefined && interview.endDate !== undefined
+    interview.startDate && interview.endDate !== undefined
       ? Math.round(
-          ((+interview.startDate - +new Date()) /
-            (+interview.startDate - +interview.endDate)) *
+          (differenceInMinutes(interview.startDate, new Date()) /
+            differenceInMinutes(interview.startDate, interview.endDate)) *
             100
         )
       : 0
@@ -50,11 +51,14 @@ export function InterviewCard({ interview }: InterviewCardProps) {
         </ApplicantWrap>
         <BottomDateWrap>
           <RecruitDate recruiting={interview.recruiting} days={days} />
-          {percent > 100 ? (
-            <Progress max="100" value="100" />
-          ) : (
-            <Progress max="100" value={percent} />
-          )}
+          <ProgressBar
+            maxNumber="100"
+            valueNumber={percent}
+            width="fit"
+            height="md"
+            marginLeftRight="lg"
+            marginTopBottom="md"
+          />
         </BottomDateWrap>
       </CardContainer>
     </MainContainer>

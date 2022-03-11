@@ -77,12 +77,6 @@ const BottomDateWrap = styled.div`
   display: flex;
   flex-direction: column;
 `
-
-const Progress = styled.progress`
-  width: inherit;
-  margin: 8px 16px;
-  height: 8px;
-`
 export {
   AllApplicant,
   ApplicantCount,
@@ -92,6 +86,5 @@ export {
   CardTitleWrap,
   CheckApplicant,
   MainContainer,
-  NewApplicant,
-  Progress
+  NewApplicant
 }
