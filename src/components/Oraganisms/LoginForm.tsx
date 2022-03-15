@@ -6,6 +6,7 @@ import {
 } from 'react-hook-form'
 
 import { Inputs } from '@/../pages/Login'
+import Box from '@/components/Atoms/Box'
 import Button from '@/components/Atoms/Button'
 import InputForm from '@/components/Atoms/Form/inputForm'
 
@@ -29,7 +30,12 @@ export function LoginForm({
 }: LoginPageType) {
   return (
     <S.LoginFormContainer onSubmit={handleSubmit(onFormSubmit)}>
-      <S.InputWrapper>
+      <Box
+        className="inputWrapper"
+        direction="column"
+        width="full"
+        style={{ height: '85%' }}
+      >
         <S.EmailaddressText>Email address</S.EmailaddressText>
         {errors.idRequired && errors.idRequired.type === 'required' ? (
           <S.Error>이메일을 입력해주세요.</S.Error>
@@ -66,8 +72,8 @@ export function LoginForm({
           placeholder="Password"
           style={S.InputStyle}
         />
-      </S.InputWrapper>
-      <S.ButtonWrapper>
+      </Box>
+      <Box className="buttonWrapper" hAlign="center" vAlign="middle">
         <Button
           rounded="normal"
           width="fit"
@@ -78,7 +84,7 @@ export function LoginForm({
         >
           Sign in
         </Button>
-      </S.ButtonWrapper>
+      </Box>
     </S.LoginFormContainer>
   )
 }

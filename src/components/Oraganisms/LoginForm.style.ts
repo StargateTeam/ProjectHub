@@ -33,10 +33,6 @@ export const Error = styled.div`
   color: red;
 `
 
-export const InputWrapper = styled.div`
-  width: 100%;
-  height: 85%;
-`
 export const InputTitle = styled.div`
   font-size: 15px;
 `
@@ -61,10 +57,4 @@ export const PasswordForgotText = styled.div`
   :hover {
     text-decoration: underline;
   }
-`
-export const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 15%;
 `
