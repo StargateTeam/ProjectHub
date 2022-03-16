@@ -1,15 +1,7 @@
 import type { GridSizeType } from '@/constants/styles/gridSize'
+import { ResponsiveValue } from '@/types/util'
 
 import TextStyled from './Text.style'
-
-export declare type ResponsiveValue<T> =
-  | T
-  | null
-  | undefined
-  | Array<T | null>
-  | {
-      [key in string | number]?: T
-    }
 
 export type TextProps = React.PropsWithChildren<{
   fontSize?: ResponsiveValue<keyof GridSizeType | (string & {})>
