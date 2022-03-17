@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
-const MainContainer = styled.div``
+export const MainContainer = styled.div``
 
-const CardContainer = styled.div`
+export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -15,7 +15,7 @@ const CardContainer = styled.div`
   box-sizing: border-box;
 `
 
-const CardTitleWrap = styled.div`
+export const CardTitleWrap = styled.div`
   width: 305px;
   height: 150px;
   background: #c5fbff;
@@ -29,20 +29,20 @@ const CardTitleWrap = styled.div`
   font-weight: bold;
 `
 
-const ApplicantWrap = styled.div`
+export const ApplicantWrap = styled.div`
   margin: 8px 16px;
   width: -webkit-fill-available;
   display: flex;
   justify-content: space-between;
 `
 
-const AllApplicant = styled.div`
+export const AllApplicant = styled.div`
   display: flex;
   align-items: center;
   font-weight: bold;
 `
 
-const NewApplicant = styled.div`
+export const NewApplicant = styled.div`
   background-color: #f04040;
   width: 20px;
   height: 20px;
@@ -60,31 +60,24 @@ const NewApplicant = styled.div`
   margin-left: 4px;
 `
 
-const CheckApplicant = styled.div`
+export const CheckApplicant = styled.div`
   display: flex;
   align-items: center;
   font-weight: bold;
   color: #6dcd01;
 `
 
-const ApplicantCount = styled.div`
+export const ApplicantCount = styled.div`
   margin-left: 8px;
 `
 
-const BottomDateWrap = styled.div`
+export const BottomDateWrap = styled.div`
   width: -webkit-fill-available;
   margin-top: 32px;
   display: flex;
   flex-direction: column;
 `
-export {
-  AllApplicant,
-  ApplicantCount,
-  ApplicantWrap,
-  BottomDateWrap,
-  CardContainer,
-  CardTitleWrap,
-  CheckApplicant,
-  MainContainer,
-  NewApplicant
-}
+export const ProgressWrap = styled.div`
+  margin: 8px 16px;
+  display: flex;
+`

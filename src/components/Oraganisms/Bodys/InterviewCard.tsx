@@ -1,9 +1,10 @@
-import { differenceInDays, differenceInMinutes } from 'date-fns'
+import { useMemo } from 'react'
 import { FiUser, FiUserCheck } from 'react-icons/fi'
 
-import { interviewCardInfo } from '@/../pages/Main'
 import ProgressBar from '@/components/Atoms/ProgressBar'
 import RecruitDate from '@/components/Oraganisms/Bodys/RecruitDate'
+import { calculateDays, calculatePercent } from '@/core/utils/interviewUtils'
+import { interviewCardInfo } from '@/types/interview'
 
 import {
   AllApplicant,
@@ -14,7 +15,8 @@ import {
   CardTitleWrap,
   CheckApplicant,
   MainContainer,
-  NewApplicant
+  NewApplicant,
+  ProgressWrap
 } from './InterviewCard.style'
 
 type InterviewCardProps = {
@@ -22,18 +24,15 @@ type InterviewCardProps = {
 }
 
 export function InterviewCard({ interview }: InterviewCardProps) {
-  const days =
-    interview.startDate && interview.endDate
-      ? differenceInDays(interview.endDate, new Date())
-      : 0
-  const percent =
-    interview.startDate && interview.endDate !== undefined
-      ? Math.round(
-          (differenceInMinutes(interview.startDate, new Date()) /
-            differenceInMinutes(interview.startDate, interview.endDate)) *
-            100
-        )
-      : 0
+  const days = useMemo<number>(
+    () => calculateDays(interview.endDate, new Date()),
+    [interview.endDate]
+  )
+  const percent = useMemo<number>(
+    () => calculatePercent(interview.startDate, interview.endDate, new Date()),
+    [interview.startDate, interview.endDate]
+  )
+
   return (
     <MainContainer>
       <CardContainer>
@@ -51,14 +50,14 @@ export function InterviewCard({ interview }: InterviewCardProps) {
         </ApplicantWrap>
         <BottomDateWrap>
           <RecruitDate recruiting={interview.recruiting} days={days} />
-          <ProgressBar
-            maxNumber="100"
-            valueNumber={percent}
-            width="fit"
-            height="md"
-            marginLeftRight="lg"
-            marginTopBottom="md"
-          />
+          <ProgressWrap>
+            <ProgressBar
+              maxNumber="100"
+              valueNumber={percent}
+              width="full"
+              height="md"
+            />
+          </ProgressWrap>
         </BottomDateWrap>
       </CardContainer>
     </MainContainer>

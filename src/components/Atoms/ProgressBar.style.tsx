@@ -17,9 +17,6 @@ const useWidthStyle = config('width', {
     padding: '0px',
     paddingLeft: '1.5rem',
     paddingRight: '1.5rem'
-  },
-  inherit: {
-    width: 'inherit'
   }
 })
 
@@ -31,34 +28,9 @@ const useHeightStyle = config(
   })
 )
 
-// 패딩(탑) 처리
-// 팩토리만들기
-const useMarginYStyle = config(
-  'marginTopBottom',
-  makeStyleConst(GridSize, {
-    factory: (styleUnit) => ({
-      marginTop: styleUnit,
-      marginBottom: styleUnit
-    })
-  })
-)
-
-// 패딩(좌우) 처리
-const usePaddingXStyle = config(
-  'marginLeftRight',
-  makeStyleConst(GridSize, {
-    factory: (styleUnit) => ({
-      marginLeft: styleUnit,
-      marginRight: styleUnit
-    })
-  })
-)
-
 const ProgressBarStyled = styled.progress<ProgressProps>((props) => ({
   ...useWidthStyle(props),
-  ...useHeightStyle(props),
-  ...useMarginYStyle(props),
-  ...usePaddingXStyle(props)
+  ...useHeightStyle(props)
 }))
 
 export default ProgressBarStyled
