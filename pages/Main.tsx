@@ -1,5 +1,5 @@
 import { MainPage } from '@/components/Templetes/MainPage'
-import { interviewCardInfo } from '@/types/interview'
+import type { interviewCardInfo } from '@/types/interview'
 
 const interview: Array<interviewCardInfo> = [
   {

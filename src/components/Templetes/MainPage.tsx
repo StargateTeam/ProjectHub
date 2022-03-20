@@ -1,5 +1,5 @@
 import { InterviewCard } from '@/components/Oraganisms/Bodys/InterviewCard'
-import { interviewCardInfo } from '@/types/interview'
+import type { interviewCardInfo } from '@/types/interview'
 
 type MainPageType = {
   interview: Array<interviewCardInfo>
