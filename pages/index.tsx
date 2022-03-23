@@ -19,6 +19,6 @@ const Home: Page = () => {
   return <DefaultPage onDispatchButtonHandler={dispatchHandler} />
 }
 
-Home.header = DefaultHeader
+// Home.header = DefaultHeader
 
 export default Home
