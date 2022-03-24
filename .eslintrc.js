@@ -24,7 +24,16 @@ module.exports = {
     'simple-import-sort/exports': 'error',
     camelcase: 'error',
     'jsx-a11y/alt-text': 'warn',
-    '@next/next/no-img-element': 'off'
+    '@next/next/no-img-element': 'off',
+    '@typescript-eslint/ban-types': [
+      'error',
+      {
+        extendDefaults: true,
+        types: {
+          '{}': false
+        }
+      }
+    ]
   },
   env: {
     node: true
