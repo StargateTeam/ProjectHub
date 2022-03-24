@@ -43,6 +43,55 @@ const usePaddingXStyle = config(
   })
 )
 
+// 패딩(상하) 처리
+const usePaddingYStyle = config(
+  'py',
+  makeStyleConst(GridSize, {
+    factory: (styleUnit) => ({
+      paddingTop: styleUnit,
+      paddingBottom: styleUnit
+    })
+  })
+)
+
+// 마진(좌우) 처리
+const useMarginXStyle = config(
+  'mx',
+  makeStyleConst(GridSize, {
+    factory: (styleUnit) => ({
+      marginLeft: styleUnit,
+      marginRight: styleUnit
+    })
+  })
+)
+
+// 마진(좌) 처리
+const useMarginLeftStyle = config(
+  'ml',
+  makeStyleConst(GridSize, {
+    styleKey: 'margin-left'
+  })
+)
+
+// 마진(우) 처리
+const useMarginRightStyle = config(
+  'mr',
+  makeStyleConst(GridSize, {
+    styleKey: 'margin-right'
+  })
+)
+
+// 마진(상하) 처리
+const useMarginYStyle = config(
+  'my',
+  makeStyleConst(GridSize, {
+    factory: (styleUnit) => ({
+      marginTop: styleUnit,
+      marginBottom: styleUnit
+    })
+  })
+)
+
 // flex 수평 처리
 const useHorizontalStyle = config('hAlign', (props) => {
   if (props.direction === 'column') {
@@ -109,6 +158,14 @@ const useGapStyle = config(
   })
 )
 
+// rounded 처리
+const useRoundedStyle = config(
+  'rounded',
+  makeStyleConst(GridSize, {
+    styleKey: 'border-radius'
+  })
+)
+
 const useDirectionStyle = config('direction', {
   column: {
     flexDirection: 'column'
@@ -131,7 +188,13 @@ const BoxStyled = styled.div<BoxProps>((props) => ({
   ...useGapStyle(props),
   ...useDirectionStyle(props),
   ...usePaddingTopStyle(props),
-  ...usePaddingXStyle(props)
+  ...usePaddingXStyle(props),
+  ...usePaddingYStyle(props),
+  ...useMarginXStyle(props),
+  ...useMarginYStyle(props),
+  ...useRoundedStyle(props),
+  ...useMarginLeftStyle(props),
+  ...useMarginRightStyle(props)
 }))
 
 export default BoxStyled
