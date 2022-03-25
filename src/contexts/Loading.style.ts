@@ -13,12 +13,12 @@ export const Cover = styled.div`
   width: 100%;
   height: 100%;
   position: absolute;
-  background-color: black;
-  opacity: 20%;
+  background-color: #000000;
+  opacity: 70%;
 `
 export const Loading = styled.div`
-  border: 8px solid #f3f3f3; /* Light grey */
-  border-top: 8px solid #999999; /* Blue */
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #999999;
   border-radius: 50%;
   width: 70px;
   height: 70px;

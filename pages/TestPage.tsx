@@ -1,7 +1,6 @@
 import { useContext } from 'react'
 
-import { LoadingContext } from '@/contexts/Loading'
-import { Loading } from '@/contexts/Loading'
+import { Loading, LoadingContext } from '@/contexts/Loading'
 
 export default function TestPage() {
   const loading = useContext(LoadingContext)
@@ -9,7 +8,7 @@ export default function TestPage() {
 
   return (
     <div>
-      {!loading && Loading()}
+      {loading && Loading()}
       TestPage
     </div>
   )

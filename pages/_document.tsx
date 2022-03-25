@@ -1,7 +1,6 @@
 import Document, { DocumentContext } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
-import { LoadingContext, loadingInitalState } from '@/contexts/Loading'
 class CustomDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const sheet = new ServerStyleSheet()
@@ -20,10 +19,8 @@ class CustomDocument extends Document {
         ...initialProps,
         styles: (
           <>
-            <LoadingContext.Provider value={loadingInitalState}>
-              {initialProps.styles}
-              {sheet.getStyleElement()}
-            </LoadingContext.Provider>
+            {initialProps.styles}
+            {sheet.getStyleElement()}
           </>
         )
       }
