@@ -16,7 +16,11 @@ export const configureStyle =
     if (typeof styleObj === 'function') {
       return styleObj(props)[props[styleKey] as T[K] & any]
     } else {
-      return styleObj[props[styleKey] as T[K] & any]
+      return (
+        styleObj[props[styleKey] as T[K] & any] || {
+          [styleKey]: props[styleKey]
+        }
+      )
     }
   }
 
