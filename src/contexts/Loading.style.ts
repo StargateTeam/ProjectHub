@@ -1,13 +1,15 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const Container = styled.div<{ isLoading }>`
   width: 100vw;
   height: 100vh;
   position: absolute;
-
+  pointer-events: ${({ isLoading }) => (isLoading ? 'auto' : 'none')};
+  opacity: ${({ isLoading }) => (isLoading ? '100%' : '0%')};
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.5s ease;
 `
 export const Cover = styled.div`
   width: 100%;
