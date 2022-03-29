@@ -47,12 +47,16 @@ export function InterviewCard({ interview }: InterviewCardProps) {
         hAlign="center"
         vAlign="middle"
       >
-        <CardTitleWrap>{interview.title}</CardTitleWrap>
+        <CardTitleWrap fontWeight="bold" fontSize="2xl">
+          {interview.title}
+        </CardTitleWrap>
         <ApplicantWrap width="full">
           <AllApplicant vAlign="middle">
             <FiUser />
             <ApplicantCount>{interview.allApplicant}</ApplicantCount>
-            <NewApplicant>N</NewApplicant>
+            <NewApplicant fontSize="10px" fontWeight="bold" color="white">
+              N
+            </NewApplicant>
           </AllApplicant>
           <CheckApplicant vAlign="middle">
             <FiUserCheck />
