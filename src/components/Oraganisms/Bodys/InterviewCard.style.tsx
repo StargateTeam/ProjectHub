@@ -5,6 +5,7 @@ import Box from '@/components/Atoms/Box'
 export const MainContainer = styled.div`
   width: 332px;
   height: 287px;
+  margin: 0 16px 16px 16px;
 `
 
 export const CardContainer = styled(Box)`
