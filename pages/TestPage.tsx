@@ -1,11 +1,6 @@
-import { useContext } from 'react'
-
-import { LoadingContextProvider } from '@/contexts/LoadingContext'
+import { useOffLoading, useOnLoading } from '@/hook/useLoading.hook'
 
 export default function TestPage() {
-  // const { setOffLoading, setOnLoading } = useLoading()
-  const { useOnLoading, useOffLoading } = useContext(LoadingContextProvider)
-
   return (
     <>
       <div>hello</div>
