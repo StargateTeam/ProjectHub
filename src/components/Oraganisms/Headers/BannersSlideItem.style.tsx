@@ -34,8 +34,13 @@ export const ZoomInBannerImg = styled.img`
   height: 248px;
   background-size: cover;
   filter: blur(0px);
+  border: 1px solid silver;
 `
 
 export const UserTextWrap = styled(Box)``
 
-export const WelcomeUserText = styled(Text)``
+export const WelcomeUserText = styled(Text)`
+  padding-left: 16px;
+`
+
+export const UserInfoWrap = styled(Box)``

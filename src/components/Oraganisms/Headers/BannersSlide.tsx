@@ -1,37 +1,48 @@
 // Import Swiper styles
 import 'swiper/css'
+import 'swiper/css/effect-fade'
 
+import { EffectFade, Mousewheel } from 'swiper'
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
 
+import type { interviewerBannersInfo } from '@/types/interview'
+
 import BannersSlideItem from './BannersSlideItem'
+
+type BannerSlidePropsType = {
+  banners: interviewerBannersInfo
+}
 
 /*
 onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
 */
 
-export default function UserSlide() {
+export default function UserSlide({ banners }: BannerSlidePropsType) {
+  const imagesSrc = banners.imageSrc
   return (
     <Swiper
       spaceBetween={10}
       slidesPerView={1}
+      loop={true}
       pagination={{
         clickable: true
       }}
+      mousewheel={true}
+      modules={[EffectFade, Mousewheel]}
+      effect="fade"
     >
-      <SwiperSlide>
-        <BannersSlideItem />
-      </SwiperSlide>
-      <SwiperSlide>
-        <BannersSlideItem />
-      </SwiperSlide>
-      <SwiperSlide>
-        <BannersSlideItem />
-      </SwiperSlide>
-      <SwiperSlide>
-        <BannersSlideItem />
-      </SwiperSlide>
+      {imagesSrc.map((img, idx) => (
+        <SwiperSlide key={idx}>
+          <BannersSlideItem
+            key={idx}
+            imgSrc={img}
+            name={banners.userName}
+            totalCountData={banners.totalJobInterviewCount}
+          />
+        </SwiperSlide>
+      ))}
     </Swiper>
   )
 }

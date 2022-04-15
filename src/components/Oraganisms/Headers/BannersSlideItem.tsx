@@ -1,14 +1,44 @@
 import React from 'react'
 
-import { BannersItemWrap, ZoomInBannerImg } from './BannersSlideItem.style'
+import {
+  BannersItemWrap,
+  UserInfoWrap,
+  UserTextWrap,
+  WelcomeUserText,
+  ZoomInBannerImg
+} from './BannersSlideItem.style'
+import UserInfoCircle from './UserInfoCircle'
 
-const imgSrc =
-  'https://cdn.pixabay.com/photo/2022/03/14/03/09/flower-7067252_960_720.jpg'
+type SlideItemPropsType = {
+  imgSrc: string
+  name: string
+  totalCountData: Array<number>
+}
 
-export default function UserSlideItem() {
+export default function UserSlideItem({
+  imgSrc,
+  name,
+  totalCountData
+}: SlideItemPropsType) {
   return (
     <BannersItemWrap imgSrc={imgSrc}>
       <ZoomInBannerImg src={imgSrc} />
+      <UserTextWrap
+        direction="column"
+        vAlign="top"
+        hAlign="left"
+        pt={4}
+        px={12}
+      >
+        <WelcomeUserText fontSize={8} fontWeight="bold" color="white">
+          어서오세요 {name} 님
+        </WelcomeUserText>
+        <UserInfoWrap>
+          {totalCountData.map((count, idx) => (
+            <UserInfoCircle key={idx} count={count} idx={idx} />
+          ))}
+        </UserInfoWrap>
+      </UserTextWrap>
     </BannersItemWrap>
   )
 }
