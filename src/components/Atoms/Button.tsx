@@ -1,9 +1,11 @@
-import { Button as ButtonStyle } from './Button.style'
+import React from 'react'
+
+import ButtonStyled from './Button.style'
 
 export type ButtonProps = React.PropsWithChildren<{
   rounded?: 'none' | 'small' | 'normal' | 'full'
   width?: 'full' | 'fit'
-  height?: 'small' | 'medium' | 'large'
+  height?: 'extraSmall' | 'small' | 'medium' | 'large'
   theme?:
     | 'primary'
     | 'primaryStroke'
@@ -20,8 +22,8 @@ export type ButtonProps = React.PropsWithChildren<{
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }>
 
-const Button = ({ children, ...rest }: ButtonProps) => {
-  return <ButtonStyle {...rest}>{children}</ButtonStyle>
+const Button = (props: ButtonProps) => {
+  return <ButtonStyled {...props}>{props.children}</ButtonStyled>
 }
 
 export default Button
