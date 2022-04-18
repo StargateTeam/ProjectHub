@@ -2,12 +2,8 @@ import { useContext } from 'react'
 
 import { LoadingContextProvider } from '@/contexts/LoadingContext'
 
-export function useOnLoading() {
+export function useLoading() {
   const { onLoading } = useContext(LoadingContextProvider)
-  return onLoading()
-}
-export function useOffLoading() {
   const { offLoading } = useContext(LoadingContextProvider)
-
-  return offLoading
+  return { onLoading, offLoading }
 }

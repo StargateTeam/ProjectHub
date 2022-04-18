@@ -1,11 +1,12 @@
-import { useOffLoading, useOnLoading } from '@/hook/useLoading.hook'
+import { useLoading } from '@/hook/useLoading.hook'
 
 export default function TestPage() {
+  const loading = useLoading()
   return (
     <>
       <div>hello</div>
-      <button onClick={useOnLoading}>on</button>
-      <button onClick={useOffLoading}>off</button>
+      <button onClick={loading.onLoading}>on</button>
+      <button onClick={loading.offLoading}>off</button>
     </>
   )
 }
