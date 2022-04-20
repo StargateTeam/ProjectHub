@@ -32,15 +32,25 @@ export const InterviewInfo = ({ interview }: InterviewInfoType) => {
     return (
       date.getFullYear() +
       '-' +
-      JSON.stringify(date.getMonth() + 1).padStart(2, '0') +
+      String(date.getMonth() + 1).padStart(2, '0') +
       '-' +
-      JSON.stringify(date.getDate()).padStart(2, '0') +
+      String(date.getDate()).padStart(2, '0') +
       ' ' +
-      JSON.stringify(date.getHours()).padStart(2, '0') +
+      String(date.getHours()).padStart(2, '0') +
       ':' +
-      JSON.stringify(date.getMinutes()).padStart(2, '0')
+      String(date.getMinutes()).padStart(2, '0')
     )
   }
+
+  const formattedStartDate = useMemo(
+    () => handleDateView(interview.startDate),
+    [interview]
+  )
+
+  const formattedEndDate = useMemo(
+    () => handleDateView(interview.endDate),
+    [interview]
+  )
   return (
     <S.Container width="half">
       <S.TitleCard width="half" height="full" hAlign="center" vAlign="middle">
@@ -79,7 +89,7 @@ export const InterviewInfo = ({ interview }: InterviewInfoType) => {
             </S.DateTitleWrapper>
             <Box>
               <Text fontSize="2xl" color="black">
-                {handleDateView(interview.startDate)}
+                {formattedStartDate}
               </Text>
             </Box>
           </S.DateWrapper>
@@ -91,7 +101,7 @@ export const InterviewInfo = ({ interview }: InterviewInfoType) => {
             </S.DateTitleWrapper>
             <Box>
               <Text fontSize="2xl" color="black">
-                {handleDateView(interview.endDate)}
+                {formattedEndDate}
               </Text>
             </Box>
           </S.DateWrapper>
