@@ -1,7 +1,3 @@
-// Import Swiper styles
-import 'swiper/css'
-import 'swiper/css/effect-fade'
-
 import { EffectFade, Mousewheel } from 'swiper'
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
