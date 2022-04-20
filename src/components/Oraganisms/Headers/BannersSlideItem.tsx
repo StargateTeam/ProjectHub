@@ -1,7 +1,10 @@
 import React from 'react'
 
 import {
+  BannerBgImg,
   BannersItemWrap,
+  DefaulImage,
+  SourceImage,
   UserInfoWrap,
   UserTextWrap,
   WelcomeUserText,
@@ -21,7 +24,11 @@ export default function UserSlideItem({
   totalCountData
 }: SlideItemPropsType) {
   return (
-    <BannersItemWrap imgSrc={imgSrc}>
+    <BannersItemWrap>
+      <BannerBgImg>
+        <SourceImage srcSet={imgSrc} />
+        <DefaulImage src={imgSrc} />
+      </BannerBgImg>
       <ZoomInBannerImg src={imgSrc} />
       <UserTextWrap
         direction="column"

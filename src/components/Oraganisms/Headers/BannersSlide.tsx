@@ -29,10 +29,10 @@ export default function UserSlide({ banners }: BannerSlidePropsType) {
       modules={[EffectFade, Mousewheel]}
       effect="fade"
     >
-      {imagesSrc.map((img, idx) => (
-        <SwiperSlide key={idx}>
+      {imagesSrc.map((img) => (
+        <SwiperSlide key={img}>
           <BannersSlideItem
-            key={idx}
+            key={img}
             imgSrc={img}
             name={banners.userName}
             totalCountData={banners.totalJobInterviewCount}
