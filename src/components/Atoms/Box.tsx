@@ -10,10 +10,17 @@ export type BoxProps = React.PropsWithChildren<{
   direction?: 'row' | 'column'
   hAlign?: 'left' | 'center' | 'right'
   vAlign?: 'top' | 'middle' | 'bottom'
-  space?: keyof GridSizeType
-  pt?: keyof GridSizeType
-  px?: keyof GridSizeType
+
   bgColor?: IColors
+  space?: ResponsiveValue<keyof GridSizeType | (string & {})>
+  pt?: ResponsiveValue<keyof GridSizeType | (string & {})>
+  px?: ResponsiveValue<keyof GridSizeType | (string & {})>
+  py?: ResponsiveValue<keyof GridSizeType | (string & {})>
+  mx?: ResponsiveValue<keyof GridSizeType | (string & {})>
+  my?: ResponsiveValue<keyof GridSizeType | (string & {})>
+  ml?: ResponsiveValue<keyof GridSizeType | (string & {})>
+  mr?: ResponsiveValue<keyof GridSizeType | (string & {})>
+  rounded?: ResponsiveValue<keyof GridSizeType | (string & {})>
   className?: string
   style?: React.CSSProperties
 }>

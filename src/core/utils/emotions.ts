@@ -1,4 +1,4 @@
-import { CSSObject } from '@emotion/styled'
+import type { CSSObject } from '@emotion/styled'
 
 import colors from '@/constants/styles/colorScheme'
 
@@ -18,11 +18,25 @@ export const configureStyle =
     if (typeof styleObj === 'function') {
       return styleObj(props)[props[styleKey] as T[K] & any]
     } else {
-      return (
-        styleObj[props[styleKey] as T[K] & any] || {
-          [styleKey]: props[styleKey]
+      if (styleObj[props[styleKey] as T[K] & any]) {
+        return styleObj[props[styleKey] as T[K] & any]
+      } else {
+        if (props[styleKey]) {
+          return styleKey in styleObj[Object.keys(styleObj)[0]]
+            ? {
+                [styleKey]: props[styleKey]
+              }
+            : Object.keys(styleObj[Object.keys(styleObj)[0]]).reduce(
+                (prev, next) => {
+                  prev[next] = props[styleKey]
+                  return prev
+                },
+                {}
+              )
+        } else {
+          return {}
         }
-      )
+      }
     }
   }
 
