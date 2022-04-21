@@ -12,19 +12,29 @@ export const BannersItemWrap = styled.div`
   position: relative;
 `
 
-export const BannerBgImg = styled.picture`
+export const OverlayImage = styled.div`
+  background-color: #61616147;
   position: absolute;
   width: 100%;
   height: 100%;
   z-index: -1;
 `
 
+export const BannerBgImg = styled.picture`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+`
+
 export const SourceImage = styled.source`
   width: 100vw;
+  object-fit: cover;
 `
 
 export const DefaulImage = styled.img`
   width: 100vw;
+  object-fit: cover;
 `
 
 export const ZoomInBannerImg = styled.img`

@@ -4,6 +4,7 @@ import {
   BannerBgImg,
   BannersItemWrap,
   DefaulImage,
+  OverlayImage,
   SourceImage,
   UserInfoWrap,
   UserTextWrap,
@@ -25,10 +26,12 @@ export default function UserSlideItem({
 }: SlideItemPropsType) {
   return (
     <BannersItemWrap>
+      <OverlayImage />
       <BannerBgImg>
         <SourceImage srcSet={imgSrc} />
         <DefaulImage src={imgSrc} />
       </BannerBgImg>
+      <OverlayImage />
       <ZoomInBannerImg src={imgSrc} />
       <UserTextWrap
         direction="column"
