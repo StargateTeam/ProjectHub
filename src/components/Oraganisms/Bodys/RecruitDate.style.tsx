@@ -1,15 +1,12 @@
 import styled from 'styled-components'
 
-const DateTextWrap = styled.div`
-  margin: 0 16px;
-  width: -webkit-fill-available;
-  display: flex;
-  justify-content: flex-end;
+import Box from '@/components/Atoms/Box'
+import Text from '@/components/Atoms/Text'
+
+const DateTextWrap = styled(Box)`
+  padding: 0 16px;
 `
 
-const DateText = styled.div`
-  font-weight: 700;
-  color: #666666;
-`
+const DateText = styled(Text)``
 
 export { DateText, DateTextWrap }
