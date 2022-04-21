@@ -1,3 +1,4 @@
+import { IColors } from '@/constants/styles/colorScheme'
 import type { GridSizeType } from '@/constants/styles/gridSize'
 import { ResponsiveValue } from '@/types/util'
 
@@ -9,6 +10,8 @@ export type BoxProps = React.PropsWithChildren<{
   direction?: 'row' | 'column'
   hAlign?: 'left' | 'center' | 'right'
   vAlign?: 'top' | 'middle' | 'bottom'
+
+  bgColor?: IColors
   space?: ResponsiveValue<keyof GridSizeType | (string & {})>
   pt?: ResponsiveValue<keyof GridSizeType | (string & {})>
   px?: ResponsiveValue<keyof GridSizeType | (string & {})>

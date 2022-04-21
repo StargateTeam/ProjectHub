@@ -1,7 +1,12 @@
 import styled, { CSSObject } from '@emotion/styled'
 
+import colors from '@/constants/styles/colorScheme'
 import GridSize from '@/constants/styles/gridSize'
-import { configureStyle, makeStyleConst } from '@/core/utils/emotions'
+import {
+  colorExtractor,
+  configureStyle,
+  makeStyleConst
+} from '@/core/utils/emotions'
 
 import { BoxProps } from './Box'
 
@@ -175,6 +180,15 @@ const useDirectionStyle = config('direction', {
   }
 })
 
+const useBackgroundColorStyle = config(
+  'bgColor',
+  makeStyleConst(colorExtractor(colors), {
+    factory: (styleUnit) => ({
+      backgroundColor: styleUnit
+    })
+  })
+)
+
 const defaultStyle: CSSObject = {
   display: 'flex'
 }
@@ -183,6 +197,7 @@ const BoxStyled = styled.div<BoxProps>((props) => ({
   ...defaultStyle,
   ...useWidthStyle(props),
   ...useHeightStyle(props),
+  ...useBackgroundColorStyle(props),
   ...useHorizontalStyle(props),
   ...useVerticalStyle(props),
   ...useGapStyle(props),

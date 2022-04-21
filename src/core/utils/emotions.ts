@@ -1,5 +1,7 @@
 import type { CSSObject } from '@emotion/styled'
 
+import colors from '@/constants/styles/colorScheme'
+
 /**
  * @emotionUtility
  * 이모션 스타일링을 간편하게 하기 위해 제작한 유틸리티 함수입니다.
@@ -62,4 +64,16 @@ export const makeStyleConst = (
   }
 
   return _clone
+}
+
+export const colorExtractor = (cc: typeof colors) => {
+  const extractorList: Record<string, any> = {}
+
+  for (const c of Object.keys(cc)) {
+    for (const v of Object.keys(cc[c])) {
+      extractorList[`${c}.${v}`] = cc[c][v]
+    }
+  }
+
+  return extractorList
 }
