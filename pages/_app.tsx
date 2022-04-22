@@ -1,4 +1,7 @@
 import '../styles/globals.css'
+// Import Swiper styles
+import 'swiper/css'
+import 'swiper/css/effect-fade'
 
 import type { AppProps } from 'next/app'
 import React from 'react'
