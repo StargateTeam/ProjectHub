@@ -1,11 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { createWrapper } from 'next-redux-wrapper'
-
-import reducer from './@test/addAnything'
+import { configureStore } from '@reduxjs/toolkit';
+import { createWrapper } from 'next-redux-wrapper';
+import reducer from './@test/addAnything';
 
 const rootReducer = {
-  test: reducer
-}
+  test: reducer,
+};
 
 export const makeStore = () =>
   configureStore({
