@@ -1,3 +1,4 @@
+import Box from '../Atoms/Box'
 import Input from '../Atoms/Input'
 import Text from '../Atoms/Text'
 
@@ -13,6 +14,7 @@ const DefaultPage = ({ onDispatchButtonHandler }: Props) => {
       <Text fontSize="45px" fontWeight="bold">
         테스트
       </Text>
+      <Box bgColor="red.700" height="506px" width={'300px'}></Box>
       <Input bgColor="black" />
     </div>
   )
