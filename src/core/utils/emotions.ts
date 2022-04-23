@@ -1,4 +1,6 @@
-import { CSSObject } from '@emotion/styled'
+import type { CSSObject } from '@emotion/styled'
+
+import colors from '@/constants/styles/colorScheme'
 
 /**
  * @emotionUtility
@@ -16,7 +18,25 @@ export const configureStyle =
     if (typeof styleObj === 'function') {
       return styleObj(props)[props[styleKey] as T[K] & any]
     } else {
-      return styleObj[props[styleKey] as T[K] & any]
+      if (styleObj[props[styleKey] as T[K] & any]) {
+        return styleObj[props[styleKey] as T[K] & any]
+      } else {
+        if (props[styleKey]) {
+          return styleKey in styleObj[Object.keys(styleObj)[0]]
+            ? {
+                [styleKey]: props[styleKey]
+              }
+            : Object.keys(styleObj[Object.keys(styleObj)[0]]).reduce(
+                (prev, next) => {
+                  prev[next] = props[styleKey]
+                  return prev
+                },
+                {}
+              )
+        } else {
+          return {}
+        }
+      }
     }
   }
 
@@ -44,4 +64,16 @@ export const makeStyleConst = (
   }
 
   return _clone
+}
+
+export const colorExtractor = (cc: typeof colors) => {
+  const extractorList: Record<string, any> = {}
+
+  for (const c of Object.keys(cc)) {
+    for (const v of Object.keys(cc[c])) {
+      extractorList[`${c}.${v}`] = cc[c][v]
+    }
+  }
+
+  return extractorList
 }

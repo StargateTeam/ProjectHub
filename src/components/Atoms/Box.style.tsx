@@ -1,7 +1,12 @@
 import styled, { CSSObject } from '@emotion/styled'
 
+import colors from '@/constants/styles/colorScheme'
 import GridSize from '@/constants/styles/gridSize'
-import { configureStyle, makeStyleConst } from '@/core/utils/emotions'
+import {
+  colorExtractor,
+  configureStyle,
+  makeStyleConst
+} from '@/core/utils/emotions'
 
 import { BoxProps } from './Box'
 
@@ -39,6 +44,55 @@ const usePaddingXStyle = config(
     factory: (styleUnit) => ({
       paddingLeft: styleUnit,
       paddingRight: styleUnit
+    })
+  })
+)
+
+// 패딩(상하) 처리
+const usePaddingYStyle = config(
+  'py',
+  makeStyleConst(GridSize, {
+    factory: (styleUnit) => ({
+      paddingTop: styleUnit,
+      paddingBottom: styleUnit
+    })
+  })
+)
+
+// 마진(좌우) 처리
+const useMarginXStyle = config(
+  'mx',
+  makeStyleConst(GridSize, {
+    factory: (styleUnit) => ({
+      marginLeft: styleUnit,
+      marginRight: styleUnit
+    })
+  })
+)
+
+// 마진(좌) 처리
+const useMarginLeftStyle = config(
+  'ml',
+  makeStyleConst(GridSize, {
+    styleKey: 'margin-left'
+  })
+)
+
+// 마진(우) 처리
+const useMarginRightStyle = config(
+  'mr',
+  makeStyleConst(GridSize, {
+    styleKey: 'margin-right'
+  })
+)
+
+// 마진(상하) 처리
+const useMarginYStyle = config(
+  'my',
+  makeStyleConst(GridSize, {
+    factory: (styleUnit) => ({
+      marginTop: styleUnit,
+      marginBottom: styleUnit
     })
   })
 )
@@ -109,6 +163,14 @@ const useGapStyle = config(
   })
 )
 
+// rounded 처리
+const useRoundedStyle = config(
+  'rounded',
+  makeStyleConst(GridSize, {
+    styleKey: 'border-radius'
+  })
+)
+
 const useDirectionStyle = config('direction', {
   column: {
     flexDirection: 'column'
@@ -118,6 +180,15 @@ const useDirectionStyle = config('direction', {
   }
 })
 
+const useBackgroundColorStyle = config(
+  'bgColor',
+  makeStyleConst(colorExtractor(colors), {
+    factory: (styleUnit) => ({
+      backgroundColor: styleUnit
+    })
+  })
+)
+
 const defaultStyle: CSSObject = {
   display: 'flex'
 }
@@ -126,12 +197,19 @@ const BoxStyled = styled.div<BoxProps>((props) => ({
   ...defaultStyle,
   ...useWidthStyle(props),
   ...useHeightStyle(props),
+  ...useBackgroundColorStyle(props),
   ...useHorizontalStyle(props),
   ...useVerticalStyle(props),
   ...useGapStyle(props),
   ...useDirectionStyle(props),
   ...usePaddingTopStyle(props),
-  ...usePaddingXStyle(props)
+  ...usePaddingXStyle(props),
+  ...usePaddingYStyle(props),
+  ...useMarginXStyle(props),
+  ...useMarginYStyle(props),
+  ...useRoundedStyle(props),
+  ...useMarginLeftStyle(props),
+  ...useMarginRightStyle(props)
 }))
 
 export default BoxStyled
