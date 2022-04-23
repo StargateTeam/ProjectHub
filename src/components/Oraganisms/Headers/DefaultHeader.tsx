@@ -15,7 +15,7 @@ const DefaultHeader = () => {
       vAlign="middle"
     >
       <FontAwesomeIcon
-        icon={faUserAlt}
+        icon={faUserAlt as any}
         size="2x"
         width="22px"
         height="22px"
