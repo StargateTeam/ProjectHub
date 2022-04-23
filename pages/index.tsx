@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 
-import DefaultHeader from '@/components/Oraganisms/Headers/DefaultHeader'
+//import DefaultHeader from '@/components/Oraganisms/Headers/DefaultHeader'
 import DefaultPage from '@/components/Templetes/DefaultPage'
 import { Page } from '@/types/context'
 

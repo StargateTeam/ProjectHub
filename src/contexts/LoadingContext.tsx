@@ -2,9 +2,12 @@ import React, { createContext, useCallback, useState } from 'react'
 
 import * as S from './Loading.style'
 
+const voidFunction = () => {
+  //임의의 주석
+}
 export const LoadingContextProvider = createContext({
-  onLoading: () => {},
-  offLoading: () => {}
+  onLoading: voidFunction,
+  offLoading: voidFunction
 })
 
 export type LoadingContextType = { children: React.ReactNode }

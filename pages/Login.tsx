@@ -13,12 +13,8 @@ export default function Login() {
     control
   } = useForm<Inputs>()
 
-  const onFormSubmit: SubmitHandler<Inputs> = ({
-    idRequired,
-    passwordRequired
-  }) => {
-    console.log('id', idRequired)
-    console.log('pw', passwordRequired)
+  const onFormSubmit: SubmitHandler<Inputs> = () => {
+    //임의의 주석
   }
   return (
     <LoginPage
