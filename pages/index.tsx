@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 
-import DefaultHeader from '@/components/Oraganisms/Headers/DefaultHeader'
+//import DefaultHeader from '@/components/Oraganisms/Headers/DefaultHeader'
 import DefaultPage from '@/components/Templetes/DefaultPage'
 import { Page } from '@/types/context'
 
@@ -19,6 +19,6 @@ const Home: Page = () => {
   return <DefaultPage onDispatchButtonHandler={dispatchHandler} />
 }
 
-Home.header = DefaultHeader
+// Home.header = DefaultHeader
 
 export default Home
