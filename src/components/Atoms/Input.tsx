@@ -1,17 +1,15 @@
-import colorScheme from '@/constants/styles/colorScheme'
+import { defaultStyle } from '@/core/utils/createDefaultStyle'
 
 import InputStyled from './Input.style'
 
-export type InputProps = React.PropsWithChildren<{
-  rounded?: 'none' | 'small' | 'normal' | 'full'
-  width?: 'full' | 'fit'
-  height?: 'extraSmall' | 'small' | 'medium' | 'large'
-  theme?: 'outline'
-  className?: string
-  style?: React.CSSProperties
-  placeholder?: string
-  bgColor?: keyof typeof colorScheme
-}>
+export type InputProps = React.PropsWithChildren<
+  Omit<defaultStyle, 'direction' | 'height' | 'width'> & {
+    theme?: 'outline'
+    className?: string
+    style?: React.CSSProperties
+    placeholder?: string
+  }
+>
 
 const Input = (props: InputProps) => {
   return <InputStyled {...props} />

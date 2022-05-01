@@ -52,14 +52,14 @@ export const InterviewInfo = ({ interview }: InterviewInfoType) => {
     [interview]
   )
   return (
-    <S.Container width="half">
-      <S.TitleCard width="half" height="full" hAlign="center" vAlign="middle">
+    <S.Container w="half">
+      <S.TitleCard w="half" h="full" hAlign="center" vAlign="middle">
         <Text fontSize="2xl" color="white" fontWeight="bold">
           {interview.title}
         </Text>
       </S.TitleCard>
-      <S.InfoWrapper width="half" direction="column">
-        <Box width="full" direction="column" height="half">
+      <S.InfoWrapper w="half" direction="column">
+        <Box w="full" direction="column" h="half">
           <RecruitDate
             recruiting={interview.recruiting}
             days={differenceInDay}
@@ -75,8 +75,8 @@ export const InterviewInfo = ({ interview }: InterviewInfoType) => {
         </Box>
 
         <Box
-          width="full"
-          height="half"
+          w="full"
+          h="half"
           direction="column"
           hAlign="right"
           vAlign="bottom"
