@@ -7,12 +7,7 @@ export type StartButtonProps = React.PropsWithChildren<{}>
 export const StartButton = (props: StartButtonProps) => {
   return (
     <S.ButtonWrapper hAlign="center" vAlign="middle">
-      <S.StartButton
-        width="full"
-        height="medium"
-        theme="primary"
-        rounded="full"
-      >
+      <S.StartButton w="full" h="medium" theme="primary" rounded="full">
         <Text color="white" fontWeight="bold">
           {props.children}
         </Text>

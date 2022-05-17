@@ -3,7 +3,7 @@ import Text from '@/components/Atoms/Text'
 
 const QuestionDetailTemplete = () => {
   return (
-    <Box style={{ backgroundColor: '#E4E4E4' }} py="4rem" height="full">
+    <Box style={{ backgroundColor: '#E4E4E4' }} py="4rem" h="full">
       <Box
         css={{
           marginLeft: 'auto',
@@ -11,16 +11,16 @@ const QuestionDetailTemplete = () => {
         }}
       >
         <Box
-          width="8rem"
+          w="8rem"
           css={{ backgroundColor: 'white' }}
           rounded="lg"
           mr="md"
         ></Box>
-        <Box width="60rem" height="full" direction="column" space="lg">
+        <Box w="60rem" h="full" direction="column" space="lg">
           <Box
             rounded="lg"
-            width="full"
-            height="20rem"
+            w="full"
+            h="20rem"
             px="4rem"
             py="1rem"
             direction="column"
@@ -46,8 +46,8 @@ const QuestionDetailTemplete = () => {
           </Box>
           <Box
             rounded="lg"
-            width="full"
-            height="35rem"
+            w="full"
+            h="35rem"
             css={{
               backgroundColor: 'white'
             }}

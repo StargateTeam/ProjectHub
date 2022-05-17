@@ -14,7 +14,7 @@ export function UserSectionPage(props: UserSectionPageType) {
   return (
     <Box hAlign="center" direction="column">
       <Box
-        width="full"
+        w="full"
         hAlign="center"
         direction="column"
         style={{ margin: '100px 0px' }}
@@ -23,7 +23,7 @@ export function UserSectionPage(props: UserSectionPageType) {
       </Box>
       <EmailBox />
       <Box
-        width="full"
+        w="full"
         hAlign="center"
         direction="column"
         style={{ margin: '40px 0px 20px 0px' }}

@@ -8,9 +8,9 @@ export const EmailBox = () => {
         <Text>Email address</Text>
       </S.TextWrapper>
       <S.EmailInput
-        width="full"
+        w="full"
         rounded="full"
-        height="small"
+        h="small"
         placeholder="Email address"
       />
     </S.Wrapper>

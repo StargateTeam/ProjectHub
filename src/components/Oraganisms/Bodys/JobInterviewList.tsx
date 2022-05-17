@@ -21,7 +21,7 @@ type JobInterviewListType = {
 
 function JobInterviewList({ interview }: JobInterviewListType) {
   return (
-    <ListtWrap direction="column" width="full">
+    <ListtWrap direction="column" w="full">
       <ListHeaderWrap>
         <HeaderTitle fontSize="24px" fontWeight="bold">
           면접리스트

@@ -6,7 +6,7 @@ import Box from '@/components/Atoms/Box'
 const DefaultHeader = () => {
   return (
     <Box
-      height={10}
+      h={10}
       css={{
         backgroundColor: 'rgb(40 41 54)',
         paddingRight: '1rem'

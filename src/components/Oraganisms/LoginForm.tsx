@@ -33,7 +33,7 @@ export function LoginForm({
       <Box
         className="inputWrapper"
         direction="column"
-        width="full"
+        w="full"
         style={{ height: '85%' }}
       >
         <S.EmailaddressText>Email address</S.EmailaddressText>
@@ -76,8 +76,8 @@ export function LoginForm({
       <Box className="buttonWrapper" hAlign="center" vAlign="middle">
         <Button
           rounded="normal"
-          width="fit"
-          height="small"
+          w="fit"
+          h="small"
           theme="gray"
           buttonType="submit"
           style={S.ButtonStyle}

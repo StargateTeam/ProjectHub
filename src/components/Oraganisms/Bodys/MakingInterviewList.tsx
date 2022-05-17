@@ -13,7 +13,7 @@ type MakingInterviewListType = {
 
 function MakingInterviewList({ makingInterview }: MakingInterviewListType) {
   return (
-    <ListtWrap direction="column" width="full">
+    <ListtWrap direction="column" w="full">
       <HeaderTitle fontSize="24px" fontWeight="bold">
         작성중인 면접 리스트
       </HeaderTitle>
