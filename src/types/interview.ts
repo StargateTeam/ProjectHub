@@ -17,3 +17,17 @@ export type interviewCardInfo = {
   /** 면접 종료 날짜(Date) */
   endDate?: Date
 }
+
+/**
+ * @description interviewee List 에 들어갈 데이터를 담는 type
+ */
+export type IntervieweeInfo = {
+  /** 면접 번호(1부터 시작): number  */
+  number: number
+  /** 면접자 이메일: string  */
+  email: string
+  /** 응시자 답안 제출 시각: Date  */
+  interviewDate: string
+  /** 채점 여부 상태표 [미채점(default)/합격/불합격]: string */
+  scoringStatus: string
+}
