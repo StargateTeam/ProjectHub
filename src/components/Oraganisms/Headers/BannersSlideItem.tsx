@@ -2,10 +2,12 @@ import React from 'react'
 
 import {
   BannerBgImg,
+  BannerBgSVGWrap,
   BannersItemWrap,
-  DefaulImage,
-  OverlayImage,
-  SourceImage,
+  BlurDefs,
+  BlurFeGaussianBlur,
+  BlurFilter,
+  BlurSVG,
   UserInfoWrap,
   UserTextWrap,
   WelcomeUserText,
@@ -26,12 +28,20 @@ export default function UserSlideItem({
 }: SlideItemPropsType) {
   return (
     <BannersItemWrap>
-      <OverlayImage />
-      <BannerBgImg>
-        <SourceImage srcSet={imgSrc} />
-        <DefaulImage src={imgSrc} />
-      </BannerBgImg>
-      <OverlayImage />
+      <BannerBgSVGWrap>
+        <BlurSVG xmlns="http://www.w3.org/2000/svg">
+          <BlurDefs />
+          <BlurFilter id="blur1">
+            <BlurFeGaussianBlur stdDeviation="2" />
+          </BlurFilter>
+          <BannerBgImg
+            xlinkHref={imgSrc}
+            x="-50%"
+            y="-60%"
+            filter="url(#blur1)"
+          />
+        </BlurSVG>
+      </BannerBgSVGWrap>
       <ZoomInBannerImg src={imgSrc} />
       <UserTextWrap
         direction="column"
