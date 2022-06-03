@@ -5,7 +5,7 @@ import Button from '@/components/Atoms/Button'
 import Text from '@/components/Atoms/Text'
 import colors from '@/constants/styles/colorScheme'
 
-export const Container = styled(Box)`
+export const BoxWrapper = styled(Box)`
   width: 700px;
   min-width: 700px;
   min-height: 700px;
@@ -27,15 +27,6 @@ export const DateTitleWrapper = styled(Box)`
 export const BarWrapper = styled(Text)`
   margin-left: 10px;
   margin-right: 10px;
-`
-
-export const OptionInput = styled.input`
-  width: 100%;
-  height: 40px;
-  border-radius: 10px;
-  border: 2px solid gray;
-  background-color: ${colors.white};
-  padding-left: 10px;
 `
 
 export const CustomButton = styled(Button)<{ color: 'red' | 'green' }>`
@@ -64,8 +55,3 @@ export const InputStyle: CSSProperties = {
   backgroundColor: colors.white,
   paddingLeft: '10px'
 }
-
-export const Error = styled(Text)`
-  color: ${colors.danger['600']};
-  font-size: 12px;
-`
