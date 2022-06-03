@@ -1,7 +1,8 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
 
 import Box from '@/components/Atoms/Box'
-import colors from '@/constants/styles/colorScheme'
+import InputForm from '@/components/Atoms/Form/inputForm'
 import { compareDate } from '@/core/utils/compareDate'
 
 import {
@@ -9,41 +10,43 @@ import {
   Container,
   CustomButton,
   DateTitleWrapper,
+  Error,
+  InputStyle,
   OptionCheckbox,
-  OptionInput,
   OptionTitle,
   OptionWrapper
 } from './CardSetting.style'
 
+export type CardSettingInputs = {
+  [key: string]: any
+}
+
 export const CardSetting = () => {
   const [isPassword, setIsPassword] = useState(false)
-  const title = useRef(null)
-  const startDate = useRef()
-  const endDate = useRef(null)
-  const password = useRef(null)
-  const handleSaveInterView = () => {
-    const startDateTypeDate = new Date(startDate.current.value)
-    const endDateTypeDate = new Date(endDate.current.value)
 
-    if (title.current.value === '') {
-      alert('면접 제목을 입력해주세요')
-      return
-    }
-    if (compareDate(startDateTypeDate, endDateTypeDate) < 0) {
+  const {
+    handleSubmit,
+    formState: { errors },
+    control
+  } = useForm<CardSettingInputs>()
+
+  const onFormSubmit: SubmitHandler<CardSettingInputs> = (e) => {
+    if (
+      compareDate(new Date(e.startDateRequired), new Date(e.endDateRequired)) <
+      0
+    ) {
       alert('면접 종료일이 면접 시작일보다 빠릅니다')
       return
-    }
-    if (isPassword && password.current.value === '') {
-      alert('패스워드를 입력해주세요')
+    } else if (!isPassword) {
+      e.passwordRequired = undefined
+    } else if (isPassword && e.passwordRequired === '') {
+      alert('비밀번호를 입력해주세요')
       return
     }
-
-    console.log('면접 제목', title.current.value)
-    console.log('면접 시작일', startDateTypeDate)
-    console.log('면접 종료일', endDateTypeDate)
-    isPassword && console.log('면접 패스워드', password.current.value)
+    console.log('결과물: ', e)
     alert('저장완료')
   }
+
   const handleEndInterView = () => {
     alert('면접을 강제종료했습니다.')
   }
@@ -73,61 +76,107 @@ export const CardSetting = () => {
       rounded="normal"
       hAlign="center"
     >
-      <Box direction="column" w="70%">
-        {/* 면접제목 */}
-        <OptionWrapper>
-          <OptionTitle>면접 제목</OptionTitle>
-          <Box>
-            <OptionInput ref={title} />
-          </Box>
-        </OptionWrapper>
-        {/* 면접 시작일-종료일 */}
-        <OptionWrapper>
-          <DateTitleWrapper w="full">
-            <OptionTitle>면접 시작일</OptionTitle>
-            <OptionTitle>면접 종료일</OptionTitle>
-          </DateTitleWrapper>
-          <Box vAlign="middle">
-            <OptionInput
-              type="datetime-local"
-              ref={startDate}
-              defaultValue={handleDateView(new Date())}
-            />
-            <BarWrapper fontWeight="bold">-</BarWrapper>
-            <OptionInput
-              type="datetime-local"
-              ref={endDate}
-              defaultValue={handleDateView(new Date())}
-            />
-          </Box>
-        </OptionWrapper>
-        {/* 면접 비밀번호 */}
-        <OptionWrapper>
-          <OptionTitle>면접 비밀번호</OptionTitle>
-          <Box hAlign="left" vAlign="middle">
-            <OptionCheckbox
-              type="checkbox"
-              onChange={() => {
-                setIsPassword((prev) => !prev)
-              }}
-            />
-            {isPassword ? (
-              <OptionInput ref={password} />
-            ) : (
-              <OptionInput
-                disabled
-                style={{ backgroundColor: colors.coolGray[400] }}
+      <form
+        onSubmit={handleSubmit(onFormSubmit)}
+        style={{
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+      >
+        <Box direction="column" w="70%">
+          {/* 면접제목 */}
+          <OptionWrapper>
+            <OptionTitle>면접 제목</OptionTitle>
+            {errors.titleRequired &&
+              errors.titleRequired.type === 'required' && (
+                <Error>제목을 입력해주세요.</Error>
+              )}
+            <Box>
+              <InputForm
+                name="titleRequired"
+                control={control}
+                rules={{
+                  required: true
+                }}
+                placeholder="제목을 입력해주세요."
+                style={InputStyle}
               />
-            )}
+            </Box>
+          </OptionWrapper>
+          {/* 면접 시작일-종료일 */}
+          <OptionWrapper>
+            <DateTitleWrapper w="full">
+              <OptionTitle>면접 시작일</OptionTitle>
+              <OptionTitle>면접 종료일</OptionTitle>
+            </DateTitleWrapper>
+            <Box vAlign="middle">
+              <InputForm
+                name="startDateRequired"
+                control={control}
+                type="datetime-local"
+                defaultValue={handleDateView(new Date())}
+                rules={{
+                  required: true
+                }}
+                style={InputStyle}
+              />
+              <BarWrapper fontWeight="bold">-</BarWrapper>
+              <InputForm
+                name="endDateRequired"
+                control={control}
+                type="datetime-local"
+                defaultValue={handleDateView(new Date())}
+                rules={{
+                  required: true
+                }}
+                style={InputStyle}
+              />
+            </Box>
+          </OptionWrapper>
+          {/* 면접 비밀번호 */}
+          <OptionWrapper>
+            <OptionTitle>면접 비밀번호</OptionTitle>
+            <Box hAlign="left" vAlign="middle">
+              <OptionCheckbox
+                type="checkbox"
+                onChange={() => {
+                  setIsPassword((prev) => !prev)
+                }}
+              />
+              {isPassword ? (
+                <InputForm
+                  name="passwordRequired"
+                  control={control}
+                  rules={{
+                    required: false
+                  }}
+                  placeholder="비밀번호를 입력해주세요."
+                  style={InputStyle}
+                />
+              ) : (
+                <InputForm
+                  disabled
+                  name="passwordRequired"
+                  control={control}
+                  rules={{
+                    required: false
+                  }}
+                  placeholder="비밀번호를 입력해주세요."
+                  style={{ ...InputStyle, backgroundColor: 'gray' }}
+                />
+              )}
+            </Box>
+          </OptionWrapper>
+          {/* 저장 */}
+          <Box>
+            <CustomButton color="green" buttonType="submit">
+              저장
+            </CustomButton>
           </Box>
-        </OptionWrapper>
-        {/* 저장 */}
-        <Box>
-          <CustomButton color="green" onClick={handleSaveInterView}>
-            저장
-          </CustomButton>
         </Box>
-      </Box>
+      </form>
       <Box direction="column" vAlign="top" w="70%">
         {/* 면접 강제종료 */}
         <OptionWrapper direction="column">

@@ -1,8 +1,7 @@
-import styled from 'styled-components'
+import styled, { CSSProperties } from 'styled-components'
 
 import Box from '@/components/Atoms/Box'
 import Button from '@/components/Atoms/Button'
-import Input from '@/components/Atoms/Input'
 import Text from '@/components/Atoms/Text'
 import colors from '@/constants/styles/colorScheme'
 
@@ -53,4 +52,20 @@ export const CustomButton = styled(Button)<{ color: 'red' | 'green' }>`
 export const OptionCheckbox = styled.input`
   width: 25px;
   height: 25px;
+  :hover {
+    cursor: pointer;
+  }
+`
+export const InputStyle: CSSProperties = {
+  width: '100%',
+  height: ' 40px',
+  borderRadius: '10px',
+  border: '2px solid gray',
+  backgroundColor: colors.white,
+  paddingLeft: '10px'
+}
+
+export const Error = styled(Text)`
+  color: ${colors.danger['600']};
+  font-size: 12px;
 `
