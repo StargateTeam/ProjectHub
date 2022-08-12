@@ -1,12 +1,9 @@
-import { useLoading } from '@/hook/useLoading.hook'
+import { CardSetting } from '@/components/Oraganisms/Bodys/CardSetting'
 
 export default function TestPage() {
-  const loading = useLoading()
   return (
-    <>
-      <div>hello</div>
-      <button onClick={loading.onLoading}>on</button>
-      <button onClick={loading.offLoading}>off</button>
-    </>
+    <div style={{ backgroundColor: 'gray', width: '100vw', height: '100vh' }}>
+      <CardSetting />
+    </div>
   )
 }
