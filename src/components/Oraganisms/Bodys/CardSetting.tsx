@@ -43,7 +43,7 @@ export const CardSetting = () => {
       alert('비밀번호를 입력해주세요')
       return
     }
-    console.log('결과물: ', e)
+    //console.log('결과물: ', e)
     alert('저장완료')
   }
 

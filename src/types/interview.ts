@@ -19,6 +19,18 @@ export type interviewCardInfo = {
 }
 
 /**
+ * @description 메인 페이지 면접관 배너 데이터
+ */
+export type interviewerBannersInfo = {
+  /** 면접관 이름(String) */
+  userName: string
+  /** [총 면접 수(number), 총 면접자 수(number), 채점한 면접자 수(number)] */
+  totalJobInterviewCount: Array<number>
+  /** 배너 이미지 배열 */
+  imageSrc: Array<string>
+}
+
+/**
  * @description interview 종료시 보일 데이터를 담는 type
  */
 export type overInterviewInfo = {
