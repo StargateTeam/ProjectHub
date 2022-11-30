@@ -7,8 +7,8 @@ type Props = {
 
 export default function RecruitDate({ recruiting, days }: Props) {
   return (
-    <DateTextWrap>
-      <DateText>
+    <DateTextWrap w="full" hAlign="right">
+      <DateText fontWeight="bold" color="#666666">
         {recruiting ? (days < 0 ? '면접 종료' : `${days}일 남음`) : 0}
       </DateText>
     </DateTextWrap>

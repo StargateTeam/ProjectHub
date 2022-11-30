@@ -1,4 +1,5 @@
-import { InterviewCard } from '@/components/Oraganisms/Bodys/InterviewCard'
+import JobInterviewList from '@/components/Oraganisms/Bodys/JobInterviewList'
+import MakingInterviewList from '@/components/Oraganisms/Bodys/MakingInterviewList'
 import BannersSlide from '@/components/Oraganisms/Headers/BannersSlide'
 import type {
   interviewCardInfo,
@@ -7,16 +8,21 @@ import type {
 
 type MainPageType = {
   interview: Array<interviewCardInfo>
+  makingInterview: Array<interviewCardInfo>
+
   banners: interviewerBannersInfo
 }
 
-export function MainPage({ interview, banners }: MainPageType) {
+export function MainPage({
+  interview,
+  makingInterview,
+  banners
+}: MainPageType) {
   return (
     <>
       <BannersSlide banners={banners} />
-      {interview.map((card) => (
-        <InterviewCard key={card.id} interview={card} />
-      ))}
+      <MakingInterviewList makingInterview={makingInterview} />
+      <JobInterviewList interview={interview} />
     </>
   )
 }

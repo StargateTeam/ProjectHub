@@ -41,25 +41,29 @@ export function InterviewCard({ interview }: InterviewCardProps) {
   return (
     <MainContainer>
       <CardContainer
-        width="full"
-        height="full"
+        w="full"
+        h="full"
         direction="column"
         hAlign="center"
         vAlign="middle"
       >
-        <CardTitleWrap>{interview.title}</CardTitleWrap>
-        <ApplicantWrap width="full">
+        <CardTitleWrap fontWeight="bold" fontSize="2xl">
+          {interview.title}
+        </CardTitleWrap>
+        <ApplicantWrap w="full">
           <AllApplicant vAlign="middle">
             <FiUser />
             <ApplicantCount>{interview.allApplicant}</ApplicantCount>
-            <NewApplicant>N</NewApplicant>
+            <NewApplicant fontSize="10px" fontWeight="bold" color="white">
+              N
+            </NewApplicant>
           </AllApplicant>
           <CheckApplicant vAlign="middle">
             <FiUserCheck />
             <ApplicantCount>{interview.checkApplicant}</ApplicantCount>
           </CheckApplicant>
         </ApplicantWrap>
-        <BottomDateWrap width="full" direction="column">
+        <BottomDateWrap w="full" direction="column">
           <RecruitDate
             recruiting={interview.recruiting}
             days={differenceInDay}

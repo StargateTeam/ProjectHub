@@ -29,3 +29,15 @@ export type interviewerBannersInfo = {
   /** 배너 이미지 배열 */
   imageSrc: Array<string>
 }
+
+/**
+ * @description interview 종료시 보일 데이터를 담는 type
+ */
+export type overInterviewInfo = {
+  /** 면접 제목(string) */
+  title: string
+  /** 면접 시작 시간(Date) */
+  time: Date
+  /** 면접 지원자 이메일(string) */
+  intervieweeEmail: string
+}

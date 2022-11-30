@@ -6,7 +6,7 @@ import Box from '@/components/Atoms/Box'
 const DefaultHeader = () => {
   return (
     <Box
-      height={10}
+      h={10}
       css={{
         backgroundColor: 'rgb(40 41 54)',
         paddingRight: '1rem'
@@ -15,7 +15,7 @@ const DefaultHeader = () => {
       vAlign="middle"
     >
       <FontAwesomeIcon
-        icon={faUserAlt}
+        icon={faUserAlt as any}
         size="2x"
         width="22px"
         height="22px"
